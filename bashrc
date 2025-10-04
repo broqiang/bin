@@ -1,22 +1,40 @@
-# Shell command vi mode
+# ✅ 自动补全（需安装 zsh-completions）
+autoload -Uz compinit
+compinit
+
+# 🔧 Shell 模式（使用 vi 编辑命令）
 set -o vi
 
-# Quickly switch dirctory
+# 🎨 提示符配置（Linux 风格，显示绝对路径）
+export PROMPT='[ %F{blue}%~%f ] $ '
+
+# 🎨 终端颜色主题（目录蓝色、文件白色、可执行绿色）
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# 📦 路径设置（自定义 bin、Flutter、Java）
+export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/development/sdk/flutter/default/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# 📁 快速切换目录
 alias cdbroqiang='cd ~/development/workspace/broqiang'
 alias cdupup='cd ~/development/workspace/upup'
 
-# Proxy 
-alias proxy='export http_proxy=http://127.0.0.1:10887;export https_proxy=http://127.0.0.1:10887'
-alias unproxy='unset http_proxy https_proxy'
+# 📂 ls 命令优化
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias lla='ls -lAh'
 
-# git alias
-alias gs='git status' 
-alias gaa='git add . '
-alias ga='git add ' 
-alias gp='git push' 
-alias gc='git commit -m ' 
+# 🧠 Git 命令别名
+alias gs='git status'
+alias gaa='git add .'
+alias ga='git add'
+alias gp='git push'
+alias gc='git commit -m'
 alias gb='git branch'
-# 因为这个需要支持传入参数,所有不使用 alias , 直接定义成一个函数 
+
+# 🧠 Git 日志函数（支持传参）
 gl() {
   count="${1:-10}"
   git log -n "$count" --reverse \
@@ -24,33 +42,22 @@ gl() {
     --pretty=format:"%h | %an | %ad | %ar %n%B%n----------------------------------------------------------------"
 }
 
+# 🌐 网络代理切换
+alias proxy='export http_proxy=http://127.0.0.1:10887; export https_proxy=http://127.0.0.1:10887'
+alias unproxy='unset http_proxy https_proxy'
 
-
-# ls alias
-alias ll='ls -lh'
-alias lla='ls -lAh'
-
-# custom bin 
-export PATH=$PATH:~/.bin
-
-# =============== Flutter configuration ===============
-# China mirror
-export PUB_HOSTED_URL=https://pub.flutter-io.cn;
+# 🐦 Flutter 配置（中国镜像）
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-# Path
-export PATH=$PATH:$HOME/development/sdk/flutter/default/bin
 export NO_PROXY=localhost,127.0.0.1,::1
 
-# =============== Go configuration ===============
+# 🐹 Go 配置
 export GOPATH=~/development/workspace/go
 export GOPROXY=https://goproxy.cn,direct
 
-# Xcode
+# ☕ Java 配置（Android Studio 内置 JDK）
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+
+# 🍎 Xcode 快捷启动
 alias xcode="open -a Xcode"
 
-# ============== Java Veriable =================
-export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jbr/Contents/Home
-export PATH=$JAVA_HOME/bin:$PATH
-
-# ========= Postgresql ==========
-PATH="/usr/local/opt/postgresql@17/bin:$PATH"
