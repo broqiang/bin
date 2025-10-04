@@ -1,0 +1,37 @@
+#!/bin/zsh
+#
+
+script_name=$(basename $0)
+
+# services
+typeset -A services=( [bro]="123.56.186.148" [dev]="182.92.104.73" [prod]="182.92.170.130" )
+
+# Define a function in zsh 
+showError() {
+	echo "Parameter error. Please enter the correct server name, for example: " 
+	for key in ${(@k)services};
+	do
+	echo "$script_name $key"
+	done
+	
+	exit 0
+}
+
+if [[ -z $1 ]]; then
+	showError
+else
+	for key in ${(@k)services};
+	do
+		if [[ $1 == $key ]];then
+			server=$key
+		fi
+	done
+
+	if [[ -z $server ]]; then
+		showError
+	fi
+
+fi
+
+ssh root@$services[$server] -p 21345
+
