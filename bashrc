@@ -6,7 +6,8 @@ compinit
 set -o vi
 
 # 🎨 提示符配置（Linux 风格，显示绝对路径）
-export PROMPT='[ %F{blue}%~%f ] $ '
+export PROMPT='%F{blue}[%~]%f $ '
+
 
 # 🎨 终端颜色主题（目录蓝色、文件白色、可执行绿色）
 export CLICOLOR=1
@@ -14,7 +15,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # 📦 路径设置（自定义 bin、Flutter、Java）
 export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/development/sdk/flutter/default/bin:$PATH"
+export PATH="$HOME/development/sdk/flutter/bin:$PATH"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # 📁 快速切换目录
@@ -43,16 +44,18 @@ gl() {
 }
 
 # 🌐 网络代理切换
-alias proxy='export http_proxy=http://127.0.0.1:10887; export https_proxy=http://127.0.0.1:10887'
+export http_proxy=http://127.0.0.1:10987
+export https_proxy=http://127.0.0.1:10987
+alias proxy='export http_proxy=http://127.0.0.1:10987; export https_proxy=http://127.0.0.1:10987'
 alias unproxy='unset http_proxy https_proxy'
 
 # 🐦 Flutter 配置（中国镜像）
-export PUB_HOSTED_URL=https://pub.flutter-io.cn
-export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-export NO_PROXY=localhost,127.0.0.1,::1
+# export PUB_HOSTED_URL=https://pub.flutter-io.cn
+# export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+# export NO_PROXY=localhost,127.0.0.1,::1
 
 # 🐹 Go 配置
-export GOPATH=~/development/workspace/go
+export GOPATH=~/development/sdk/go
 export GOPROXY=https://goproxy.cn,direct
 
 # ☕ Java 配置（Android Studio 内置 JDK）
@@ -61,3 +64,6 @@ export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 # 🍎 Xcode 快捷启动
 alias xcode="open -a Xcode"
 
+# claude code 配置
+export ANTHROPIC_BASE_URL="https://api.aigocode.com/api"
+export ANTHROPIC_AUTH_TOKEN="sk-4f7d652a98eaaf206306452a6bc8db4df61d20087fdf46fdb09507d7b74d9123"
