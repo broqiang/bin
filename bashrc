@@ -74,7 +74,7 @@ export no_proxy="localhost,127.0.0.1,::1,192.168.31.140"
 
 # claude 启动后记录日志
 cc_record() {
-  local logdir="${1:-$HOME/.claude/logs}"
+  local logdir="${1:-$HOME/.bin/logs}"
   logdir="$(cd "$logdir" && pwd)"  # 转换为绝对路径
   local timestamp="$(date +"%Y%m%d_%H%M%S")"
   local logfile="${logdir}/claude_${timestamp}.log"
