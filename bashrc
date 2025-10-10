@@ -38,14 +38,14 @@ alias gb='git branch'
 # 🧠 Git 日志函数（支持传参）
 gl() {
   count="${1:-10}"
-  git log -n "$count" --reverse \
+  git log -n "$count" \
     --date=format:"%Y-%m-%d %H:%M" \
     --pretty=format:"%h | %an | %ad | %ar %n%B%n----------------------------------------------------------------"
 }
 
 # 🌐 网络代理切换
-export http_proxy=http://127.0.0.1:10987
-export https_proxy=http://127.0.0.1:10987
+# export http_proxy=http://127.0.0.1:10987
+# export https_proxy=http://127.0.0.1:10987
 alias proxy='export http_proxy=http://127.0.0.1:10987; export https_proxy=http://127.0.0.1:10987'
 alias unproxy='unset http_proxy https_proxy'
 
@@ -67,3 +67,50 @@ alias xcode="open -a Xcode"
 # claude code 配置
 export ANTHROPIC_BASE_URL="https://api.aigocode.com/api"
 export ANTHROPIC_AUTH_TOKEN="sk-4f7d652a98eaaf206306452a6bc8db4df61d20087fdf46fdb09507d7b74d9123"
+
+# Flutter iOS 调试 - 排除本地地址代理
+export NO_PROXY="localhost,127.0.0.1,::1,192.168.31.140"
+export no_proxy="localhost,127.0.0.1,::1,192.168.31.140"
+
+# claude 启动后记录日志
+cc_record() {
+  local logdir="${1:-$HOME/.claude/logs}"
+  logdir="$(cd "$logdir" && pwd)"  # 转换为绝对路径
+  local timestamp="$(date +"%Y%m%d_%H%M%S")"
+  local logfile="${logdir}/claude_${timestamp}.log"
+
+  mkdir -p "$logdir"
+  echo "🚀 Claude 会话开始，日志将保存到：$logfile"
+  script -q "$logfile" claude
+
+  # 会话结束后的处理
+  echo ""
+  echo "✅ 会话结束"
+  echo -n "是否保留此日志？(y/n): "
+  read -r keep_log
+
+  if [[ "$keep_log" =~ ^[Nn]$ ]]; then
+    # 用户选择不保留，删除日志
+    rm -f "$logfile"
+    echo "🗑️  日志已删除"
+  elif [[ "$keep_log" =~ ^[Yy]$ ]]; then
+    # 用户选择保留，询问是否自定义名字
+    echo -n "是否自定义日志名？(直接回车跳过): "
+    read -r custom_name
+
+    if [[ -n "$custom_name" ]]; then
+      # 生成日期格式 YYYYMMDD
+      local date_suffix="$(date +"%Y%m%d")"
+      local new_logfile="${logdir}/${custom_name}_${date_suffix}.log"
+
+      # 重命名日志文件
+      mv "$logfile" "$new_logfile"
+      echo "📝 日志已重命名为：$new_logfile"
+    else
+      echo "📝 日志已保存为：$logfile"
+    fi
+  else
+    # 默认保留
+    echo "📝 日志已保存为：$logfile"
+  fi
+}
