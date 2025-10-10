@@ -29,7 +29,7 @@ gll() {
 }
 
 # 📝 Claude 会话日志记录函数
-cc_record() {
+cc() {
   local logdir="${1:-$HOME/.bin/logs}"
   logdir="$(cd "$logdir" 2>/dev/null && pwd || echo "$logdir")"  # 转换为绝对路径
   local timestamp="$(date +"%Y%m%d_%H%M%S")"
