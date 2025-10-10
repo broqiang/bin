@@ -2,11 +2,6 @@
 # 🔗 别名配置
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-# 📁 快速切换目录（使用 hash 方式，性能更好）
-hash -d broqiang="$HOME/development/workspace/broqiang"
-hash -d upup="$HOME/development/workspace/upup"
-# 使用方式：cd ~broqiang 或 cd ~upup
-
 # 传统 alias 方式（保留兼容性）
 alias cdbroqiang='cd ~/development/workspace/broqiang'
 alias cdupup='cd ~/development/workspace/upup'
