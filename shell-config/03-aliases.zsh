@@ -30,6 +30,9 @@ alias gd='git diff'
 alias gds='git diff --staged'
 
 # 使用 Kimi Api 使用 claude
-alias kimi-claude="$HOME/.bin/shell-config/claude-kimi.sh"
-# 使用 Claude Code CLI 官方 Api 泗洪 claude
-alias cc-claude="$HOME/.bin/shell-config/claude-cc.sh"
+alias kimi-claude='$HOME/.bin/shell-config/claude-kimi.sh'
+# 使用 AIGo 提供的Claude Code CLI Api 使用 claude
+alias aigo-claude='$HOME/.bin/shell-config/claude-cc.sh'
+
+# Codex CLI 使用中文 review
+alias reviewzh='codex /review --lang zh'

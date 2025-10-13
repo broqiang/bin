@@ -19,3 +19,6 @@ export GOPROXY="https://goproxy.cn,direct"
 # 🐦 Flutter 配置
 flutter_path="$HOME/development/sdk/flutter/bin"
 [[ -d "$flutter_path" ]] && export PATH="$flutter_path:$PATH"
+
+# Cursor CLI
+export PATH="$HOME/.local/bin:$PATH"
