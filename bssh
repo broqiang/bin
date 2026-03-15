@@ -4,7 +4,7 @@
 script_name=$(basename $0)
 
 # services
-typeset -A services=( [bro]="123.56.186.148" [dev]="182.92.104.73" [prod]="182.92.170.130" )
+typeset -A services=( [bro2]="112.126.85.203" [bro]="123.56.186.148" [dev]="182.92.104.73" [prod]="182.92.170.130" )
 
 # Define a function in zsh 
 showError() {

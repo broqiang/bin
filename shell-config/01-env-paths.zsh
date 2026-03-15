@@ -15,6 +15,7 @@ export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 # 🐹 Go 配置
 export GOPATH="$HOME/development/sdk/go"
 export GOPROXY="https://goproxy.cn,direct"
+export PATH="$PATH:$GOPATH/bin"
 
 # 🐦 Flutter 配置
 flutter_path="$HOME/development/sdk/flutter/bin"
@@ -22,3 +23,6 @@ flutter_path="$HOME/development/sdk/flutter/bin"
 
 # Cursor CLI
 export PATH="$HOME/.local/bin:$PATH"
+
+# .Net Config
+export PATH="/usr/local/share/dotnet:$PATH"
