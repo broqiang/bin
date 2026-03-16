@@ -4,7 +4,7 @@
 
 # 传统 alias 方式（保留兼容性）
 alias cdbroqiang='cd ~/development/workspace/broqiang'
-alias cdupupjz='cd ~/development/workspace/upupjz'
+alias cdupupwork='cd ~/development/workspace/upupwork'
 
 # 📂 ls 命令增强（根据系统类型判断）
 if [[ "$OSTYPE" == "darwin"* ]]; then
